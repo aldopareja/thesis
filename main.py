@@ -11,7 +11,7 @@ from getRoutes import getRoutes
 from itertools import product
 from copy import deepcopy
 from ARoptimization import ARoptim
-from ExpOptim import updateProb
+from ExpOptim import updatePosterior
 from ExpOptim import generateDraws
 from abstract_rendering.glyphset import idx
 #network creation
@@ -33,7 +33,8 @@ delta=0.1
 #getting routes and costs
 routesAndCosts=getRoutes(network, agents, 10, cost=True)
 #calculate the first probability distribution
-probDist=updateProb(routesAndCosts)
+posterior=updatePosterior(routesAndCosts['costs'])
+prior=posterior
 #get a route draw for each agent
 while True:
     for i in range(3000):

@@ -4,9 +4,9 @@ Created on Jan 25, 2016
 @author: aldo
 '''
 from numpy.random import choice
-def updateProb(routesAndCosts):
-    probDist=[None]*len(routesAndCosts['costs'])
-    for agentIdx, costs in enumerate(routesAndCosts['costs']):
+def updatePosterior(costs):
+    probDist=[None]*len(costs)
+    for agentIdx, costs in enumerate(costs):
         probDist[agentIdx]=[None]*len(costs)
         for routeIdx, cost in enumerate(costs):
             probDist[agentIdx][routeIdx]=(1.0/cost)/sum([1.0/tmp for tmp in costs])
