@@ -24,8 +24,8 @@ def getRoutes(network,agents,k,cost=False):
         for path in Yen.ksp_yen(G, agents[agentIdx].o, agents[agentIdx].d, k):
             agentsRoutes[agentIdx].append(path['path'])
             agentsRoutesCost[agentIdx].append(path['cost'])
-    costosInf=[[-float('Inf') for i in range(len(agentsRoutesCost[j]))] for j in range(len(agentsRoutesCost))]
+    costosZero=[[0 for i in range(len(agentsRoutesCost[j]))] for j in range(len(agentsRoutesCost))]
     if cost:
-        return {'routes':agentsRoutes,'costs':costosInf}
+        return {'routes':agentsRoutes,'costs':costosZero}
     else:            
         return(agentsRoutes)
